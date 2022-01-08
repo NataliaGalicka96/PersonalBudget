@@ -17,7 +17,7 @@ class UsersXMLFile : public XMLFile
 
 
 public:
-    UsersXMLFile(string fileName):XMLFile(fileName){
+    UsersXMLFile(string nameOfUsersFile):XMLFile(nameOfUsersFile){
     };
 
     void saveUserToXMLFile(User user);

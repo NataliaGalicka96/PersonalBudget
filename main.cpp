@@ -1,15 +1,15 @@
 #include <iostream>
 
 #include "PersonalBudget.h"
-#include "User.h"
+
 
 using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget("Users.xml");
-    char choice;
+    PersonalBudget personalBudget("Users.xml","Incomes.xml");
 
+    char choice;
 
     while(true)
     {
@@ -25,7 +25,7 @@ int main()
             case '2':
                 personalBudget.userLogging();
                 break;
-            case '3':
+            case '9':
                 exit(0);
                 break;
             default:
@@ -40,6 +40,7 @@ int main()
             switch(choice)
             {
             case '1':
+                personalBudget.addIncome();
                 break;
             case '2':
                 break;

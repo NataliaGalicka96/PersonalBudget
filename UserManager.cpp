@@ -172,3 +172,10 @@ int UserManager::userLogout()
 {
     idCurrentUser=0;
 }
+bool UserManager::checkUserLoggedIn()
+{
+    if(idCurrentUser>0)
+        return true;
+    else
+        return false;
+}

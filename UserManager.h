@@ -36,6 +36,8 @@ UserManager(string nameOfUsersFile):usersXMLFile(nameOfUsersFile)
     char selectOptionFromUserMenu();
     char selectOptionFromMainMenu();
 
+    bool checkUserLoggedIn();
+
 
 };
 #endif // USERMANAGER_H

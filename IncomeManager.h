@@ -32,6 +32,12 @@ public:
 
     string getCurrentDay();
     string convertIntToString(int number);
+    bool checkIfTheDateIsCorrect(string dateText);
+    int getDayFromDate(string date);
+    int getMonthFromDate(string date);
+    int getYearFromDate(string date);
+    int returnNumberOfDaysInMonth(int month, int year);
+    int convertStringToInt(string number);
 
 };
 #endif // INCOMEMANAGER_H

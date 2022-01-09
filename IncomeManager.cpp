@@ -30,15 +30,23 @@ Income IncomeManager::enterDataOfNewIncome()
 
     if(character=='y')
     {
-       // income.setDateText(getCurrentDay());
+        income.setDateText(getCurrentDay());
     }
     else if(character=='n')
     {
-        cout<<"Enter date in format yyyy-mm-dd: ";
         string newDateText="";
-        cin.sync();
+        cout<<"Enter date in format yyyy-mm-dd: ";
         cin>>newDateText;
-        //sprawdzenie czy data ma prawdilowy format
+        while(checkIfTheDateIsCorrect(newDateText)==false)
+        {
+
+            cout<<"Incorrect date! Enter a date between 2000-01-01 and the last day of the month of the current year."<<endl;
+            system("cls");
+            cout<<"Enter date in format yyyy-mm-dd: ";
+            cin>>newDateText;
+        }
+
+        if(checkIfTheDateIsCorrect(newDateText)==true)
         income.setDateText(newDateText);
     }
 
@@ -50,6 +58,7 @@ Income IncomeManager::enterDataOfNewIncome()
 
     cout<<"Enter amount of income: ";
     float amount;
+    cin.sync();
     cin>>amount;
     income.setAmount(amount);
 
@@ -96,4 +105,172 @@ string IncomeManager::convertIntToString(int number)
     ss << number;
     string str = ss.str();
     return str;
+}
+
+bool IncomeManager::checkIfTheDateIsCorrect(string dateText)
+{
+    string currentDateText = getCurrentDay();
+
+    int currentYear=getYearFromDate(currentDateText);
+    int currentMonth=getMonthFromDate(currentDateText);
+    int currentDay=getDayFromDate(currentDateText);
+
+    int dateYear=getYearFromDate(dateText);
+    int dateMonth = getMonthFromDate(dateText);
+    int dateDay=getDayFromDate(dateText);
+
+        if((dateYear==currentYear) && (dateMonth>=1) && (dateMonth<=currentMonth)&&(dateDay>=1&&dateDay<=returnNumberOfDaysInMonth(currentMonth,currentYear)))
+        {
+            return true;
+        }
+        else if((dateYear<currentYear)&&(dateYear>=2000)&&(dateMonth>=1)&&(dateMonth<=12) && (dateDay>=1 && dateDay<=returnNumberOfDaysInMonth(dateMonth,dateYear)))
+        {
+            return true;
+        }
+        else
+        return false;
+
+}
+
+int IncomeManager::returnNumberOfDaysInMonth(int month, int year)
+{
+    if (!month)
+    {
+        cerr<<"It's not a digit!";
+        exit(0);
+    }
+    int numberOfDays;
+
+    switch(month)
+
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        numberOfDays=31;
+        break;
+
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        numberOfDays=30;
+        break;
+
+    case 2:
+    {
+
+        if (((year%4 == 0) && (year%100 != 0)) || (year%400 == 0))
+            numberOfDays=29;
+        else numberOfDays=28;
+    }
+    break;
+
+
+    }
+    return numberOfDays;
+}
+
+int IncomeManager::convertStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+
+    return numberInt;
+}
+
+int IncomeManager::getYearFromDate(string date)
+{
+    string stringYear;
+    string stringMonth;
+    string stringDay;
+    int year;
+    int month;
+    int day;
+    string dateWithoutDash="";
+
+
+    for (int i=0; i<=date.length(); i++)
+    {
+
+        if((date[i]!='-')&&(i!=10))
+        {
+            dateWithoutDash+=date[i];
+        }
+    }
+
+    stringYear=dateWithoutDash.substr(0,4);
+    stringMonth=dateWithoutDash.substr(4,2);
+    stringDay=dateWithoutDash.substr(7,2);
+
+    year=convertStringToInt(stringYear);
+    month=convertStringToInt(stringMonth);
+    day=convertStringToInt(stringDay);
+
+    return year;
+}
+int IncomeManager::getMonthFromDate(string date)
+{
+    string stringYear;
+    string stringMonth;
+    string stringDay;
+    int year;
+    int month;
+    int day;
+    string dateWithoutDash="";
+
+
+    for (int i=0; i<=date.length(); i++)
+    {
+
+        if((date[i]!='-')&&(i!=10))
+        {
+            dateWithoutDash+=date[i];
+        }
+    }
+
+    stringYear=dateWithoutDash.substr(0,4);
+    stringMonth=dateWithoutDash.substr(4,2);
+    stringDay=dateWithoutDash.substr(7,2);
+
+    year=convertStringToInt(stringYear);
+    month=convertStringToInt(stringMonth);
+    day=convertStringToInt(stringDay);
+
+    return month;
+}
+int IncomeManager::getDayFromDate(string date)
+{
+    string stringYear;
+    string stringMonth;
+    string stringDay;
+    int year;
+    int month;
+    int day;
+    string dateWithoutDash="";
+
+
+    for (int i=0; i<=date.length(); i++)
+    {
+
+        if((date[i]!='-')&&(i!=10))
+        {
+            dateWithoutDash+=date[i];
+        }
+    }
+
+    stringYear=dateWithoutDash.substr(0,4);
+    stringMonth=dateWithoutDash.substr(4,2);
+    stringDay=dateWithoutDash.substr(6,2);
+
+    year=convertStringToInt(stringYear);
+    month=convertStringToInt(stringMonth);
+    day=convertStringToInt(stringDay);
+
+    return day;
 }

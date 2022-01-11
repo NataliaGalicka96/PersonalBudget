@@ -5,6 +5,9 @@
 #include <vector>
 #include <ctime>
 #include <sstream>
+#include <iomanip>
+#include <windows.h>
+
 #include "Income.h"
 #include "Markup.h"
 #include "IncomesXMLFile.h"
@@ -23,11 +26,17 @@ public:
     IncomeManager(string nameOfIncomesFile, int idCurrentUser)
     :incomesXMLFile(nameOfIncomesFile), ID_CURRENT_USER(idCurrentUser)
     {
-        incomes=incomesXMLFile.loadIncomesFromFile();
-        //wczytaj adresatow zalogowanego uzytkownika
+        incomes=incomesXMLFile.loadIncomesFromFile(ID_CURRENT_USER);
+        //incomes=incomesXMLFile.loadAllUserIncomes(/*ID_CURRENT_USER*/);
+
     }
-    void addIncome();
+
     Income enterDataOfNewIncome();
+    void addIncome();
+
+
+    void showIncomeOfCurrentUser();
+    void showDataOfIncome(Income income);
 
 
     string getCurrentDay();
@@ -38,6 +47,7 @@ public:
     int getYearFromDate(string date);
     int returnNumberOfDaysInMonth(int month, int year);
     int convertStringToInt(string number);
+    string changeCommaToDot(string amount);
 
 };
 #endif // INCOMEMANAGER_H

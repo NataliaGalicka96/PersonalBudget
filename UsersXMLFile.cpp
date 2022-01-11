@@ -2,17 +2,6 @@
 
 void UsersXMLFile::saveUserToXMLFile(User user)
 {
-    /*
-    int id;
-    string idText, name, surname, login, password;
-
-    id=user.getId();
-    idText=convertIntToString(user.getId());
-    name=user.getName();
-    surname=user.getSurname();
-    login=user.getLogin();
-    password=user.getPassword();
-    */
     CMarkup xmlSaveToFile;
 
     bool fileExists = xmlSaveToFile.Load(XMLFile::downloadXMLFileName());
@@ -37,6 +26,7 @@ void UsersXMLFile::saveUserToXMLFile(User user)
     cout<<endl;
     cout<<"User saved to XML file!"<<endl;
 }
+
 string UsersXMLFile::convertIntToString(int number)
 {
     ostringstream ss;
@@ -47,7 +37,6 @@ string UsersXMLFile::convertIntToString(int number)
 
 vector <User> UsersXMLFile::loadUsersFromXMLFile()
 {
-
     vector <User> users;
     User user;
     CMarkup xml;

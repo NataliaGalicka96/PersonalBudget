@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+
     PersonalBudget personalBudget("Users.xml","Incomes.xml");
 
     char choice;
@@ -37,12 +38,14 @@ int main()
         else
         {
             choice=personalBudget.selectOptionFromUserMenu();
+
             switch(choice)
             {
             case '1':
                 personalBudget.addIncome();
                 break;
             case '2':
+                personalBudget.showIncomeOfCurrentUser();
                 break;
             case '3':
                 break;
@@ -62,20 +65,11 @@ int main()
         }
 
     }
-
     return 0;
 }
 
 
-//TESTY UserManager
-//#include "UserManager.h"
 
-using namespace std;
-int mainUser()
-{
-    UserManager userManager("Users.xml");
-    //userManager.userRegistration();
-    //userManager.userLogging();
 
-}
+
 

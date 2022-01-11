@@ -20,7 +20,7 @@ User UserManager::enterDataOfNewUser()
 
     string name, surname, login, password;
     system("cls");
-    cout<<">>>>USER REGISTRATION<<<<"<<endl<<endl;
+    cout<<">>>>  USER REGISTRATION  <<<<"<<endl<<endl;
     cout<<"Enter your name: ";
     cin>>name;
     user.setName(name);
@@ -57,7 +57,7 @@ bool UserManager::loginExists(string login)
     {
         if (users[i].getLogin()==login)
         {
-            cout<<"There is a login with this name. Please enter a different login"<<endl;
+            cout<<"There is a login with this name. Please enter a different login! "<<endl;
             return true;
         }
     }
@@ -71,7 +71,7 @@ int UserManager::userLogging()
 
     system("cls");
 
-    cout<<">>>>USER LOGGING<<<<"<<endl;
+    cout<<">>>> USER LOGGING <<<<"<<endl;
 
     cout<<endl<<"Enter your login: ";
     cin>>login;

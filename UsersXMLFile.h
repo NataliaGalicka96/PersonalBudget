@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <string>
+
 
 
 #include "User.h"
@@ -24,6 +26,7 @@ public:
     vector <User> loadUsersFromXMLFile();
     string convertIntToString(int number);
     void saveNewPasswordToFile(string newPassword, int idCurrentUser);
+
 
 
 };

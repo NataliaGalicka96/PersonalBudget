@@ -13,11 +13,12 @@ void IncomeManager::addIncome()
     incomes.push_back(income);
 
     incomesXMLFile.saveIncomeToFile(income);
+
+
 }
 
 Income IncomeManager::enterDataOfNewIncome()
 {
-
     Income income;
 
     income.setIncomeId(incomesXMLFile.downloadIdOfLastIncome()+1);
@@ -30,42 +31,61 @@ Income IncomeManager::enterDataOfNewIncome()
 
     if(character=='y')
     {
-        income.setDateText(getCurrentDay());
+        income.setDate(getCurrentDay());
     }
     else if(character=='n')
     {
         string newDateText="";
         cout<<"Enter date in format yyyy-mm-dd: ";
+        cin.sync();
         cin>>newDateText;
         while(checkIfTheDateIsCorrect(newDateText)==false)
         {
 
             cout<<"Incorrect date! Enter a date between 2000-01-01 and the last day of the month of the current year."<<endl;
+            Sleep(2000);
             system("cls");
             cout<<"Enter date in format yyyy-mm-dd: ";
             cin>>newDateText;
         }
 
         if(checkIfTheDateIsCorrect(newDateText)==true)
-        income.setDateText(newDateText);
+           income.setDate(newDateText);
+
+
     }
 
     cout<<"Enter source of income (for example: salary, interest on deposit): ";
     string source;
     cin.sync();
-    cin>>source;
+    getline(cin>>ws,source);
     income.setItem(source);
 
     cout<<"Enter amount of income: ";
-    float amount;
+    float amount=0;
+    string amountString="";
     cin.sync();
-    cin>>amount;
+    cin>>amountString;
+
+    amount=atof(changeCommaToDot(amountString).c_str());
     income.setAmount(amount);
+
+    cin.sync();
+    cout<<"Income has been added!"<<endl;
+    system("pause");
 
  return income;
 }
 
+string IncomeManager::changeCommaToDot(string amount)
+{
+    string przecinek=",";
+    size_t pozycja=amount.find(przecinek);
+    if(pozycja!=string::npos)
+        amount.replace(pozycja,1,".");
 
+    return amount;
+}
 
 string IncomeManager::getCurrentDay()
 {
@@ -87,9 +107,9 @@ string IncomeManager::getCurrentDay()
     string monthString=convertIntToString(month);
     string dayString=convertIntToString(day);
 
-    if((month<10)&&(day>10))
+    if((month<10)&&(day>9))
         currentDay=yearString+"-"+"0"+monthString+"-"+dayString;
-    if((month>10)&&(day<10))
+    if((month>9)&&(day<10))
         currentDay=yearString+"-"+monthString+"-"+"0"+dayString;
     if((month<10)&&(day<10))
         currentDay=yearString+"-"+"0"+monthString+"-"+"0"+dayString;
@@ -119,7 +139,7 @@ bool IncomeManager::checkIfTheDateIsCorrect(string dateText)
     int dateMonth = getMonthFromDate(dateText);
     int dateDay=getDayFromDate(dateText);
 
-        if((dateYear==currentYear) && (dateMonth>=1) && (dateMonth<=currentMonth)&&(dateDay>=1&&dateDay<=returnNumberOfDaysInMonth(currentMonth,currentYear)))
+        if((dateYear==currentYear) && (dateMonth>=1 && dateMonth<=currentMonth)&&(dateDay>=1&&dateDay<=returnNumberOfDaysInMonth(currentMonth,currentYear)))
         {
             return true;
         }
@@ -238,6 +258,7 @@ int IncomeManager::getMonthFromDate(string date)
     stringMonth=dateWithoutDash.substr(4,2);
     stringDay=dateWithoutDash.substr(7,2);
 
+
     year=convertStringToInt(stringYear);
     month=convertStringToInt(stringMonth);
     day=convertStringToInt(stringDay);
@@ -273,4 +294,35 @@ int IncomeManager::getDayFromDate(string date)
     day=convertStringToInt(stringDay);
 
     return day;
+}
+
+
+void IncomeManager::showIncomeOfCurrentUser()
+{
+    system("cls");
+    if(!incomes.empty())
+    {
+
+        cout << "             >>> INCOMES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+            showDataOfIncome(*itr);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << endl << "File is empty!" << endl << endl;
+    }
+    system("pause");
+}
+
+void IncomeManager::showDataOfIncome(Income income)
+{
+    cout << endl << "Id: " << income.getIncomeId() << endl;
+    cout << "Date: " << income.getDate() << endl;
+    cout << "Item: " << income.getItem() << endl;
+    cout << "Amount: " << income.getAmount() << endl;
+
 }

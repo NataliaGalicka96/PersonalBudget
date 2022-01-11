@@ -8,6 +8,7 @@ int Income::getUserId()
 {
     return userId;
 }
+/*
 int Income::getDay()
 {
     return day;
@@ -20,15 +21,16 @@ int Income::getYear()
 {
     return year;
 }
-string Income::getDateText()
+*/
+string Income::getDate()
 {
-    return dateText;
+    return date;
 }
 string Income::getItem()
 {
     return item;
 }
-float Income::getAmount()
+double Income::getAmount()
 {
     return amount;
 }
@@ -41,6 +43,7 @@ void Income::setUserId(int newUserId)
 {
     userId=newUserId;
 }
+
 void Income::setDay(int newDay)
 {
     day=newDay;
@@ -53,15 +56,16 @@ void Income::setYear(int newYear)
 {
     year=newYear;
 }
-void Income::setDateText(string newDateText)
+void Income::setDate(string newDate)
 {
-    dateText=newDateText;
+    date=newDate;
 }
+
 void Income::setItem(string newItem)
 {
     item=newItem;
 }
-void Income::setAmount(float newAmount)
+void Income::setAmount(double newAmount)
 {
     amount=newAmount;
 }

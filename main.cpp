@@ -45,9 +45,10 @@ int main()
                 personalBudget.addIncome();
                 break;
             case '2':
-                personalBudget.showIncomeOfCurrentUser();
+
                 break;
             case '3':
+                personalBudget.showIncomeOfCurrentUser();
                 break;
             case '4':
                 break;

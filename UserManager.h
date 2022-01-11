@@ -21,6 +21,7 @@ class UserManager
     bool loginExists(string login);
 
 public:
+
 UserManager(string nameOfUsersFile):usersXMLFile(nameOfUsersFile)
 {
     idCurrentUser=0;

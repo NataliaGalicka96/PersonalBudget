@@ -29,7 +29,6 @@ public:
 
     string convertDoubleToString (double number);
 
-    vector <Income> loadAllUserIncomes(/*int idCurrentUser*/);
 
     int getDayFromDate(string date);
     int getMonthFromDate(string date);

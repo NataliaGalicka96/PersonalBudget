@@ -9,6 +9,7 @@
 #include "XMLFile.h"
 #include "Income.h"
 #include "Markup.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -26,14 +27,6 @@ public:
     int downloadIdOfLastIncome();
     vector <Income> loadIncomesFromFile(int idCurrentUser);
     void saveIncomeToFile(Income income);
-
-    string convertDoubleToString (double number);
-
-
-    int getDayFromDate(string date);
-    int getMonthFromDate(string date);
-    int getYearFromDate(string date);
-    int convertStringToInt(string number);
 
 };
 #endif // INCOMESXMLFILE_H

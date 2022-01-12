@@ -26,3 +26,11 @@ string AuxiliaryMethods::convertIntToString(int number)
     string str = ss.str();
     return str;
 }
+
+string AuxiliaryMethods::convertDoubleToString (double number)
+{
+    ostringstream os;
+    os << number;
+    string stringOut = os.str();
+    return stringOut;
+}

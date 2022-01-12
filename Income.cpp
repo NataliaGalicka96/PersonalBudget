@@ -8,7 +8,7 @@ int Income::getUserId()
 {
     return userId;
 }
-/*
+
 int Income::getDay()
 {
     return day;
@@ -21,7 +21,7 @@ int Income::getYear()
 {
     return year;
 }
-*/
+
 string Income::getDate()
 {
     return date;

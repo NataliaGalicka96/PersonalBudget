@@ -43,7 +43,7 @@ void IncomesXMLFile::saveIncomeToFile(Income income)
     xml.AddElem("UserID",income.getUserId());
     xml.AddElem("Date", income.getDate());
     xml.AddElem("Item",income.getItem());
-    amount=convertDoubleToString(income.getAmount());
+    amount=AuxiliaryMethods::convertDoubleToString(income.getAmount());
     xml.AddElem("IncomeAmount",amount);
 
 
@@ -101,113 +101,4 @@ vector <Income> IncomesXMLFile::loadIncomesFromFile(int idCurrentUser)
 
     }
     return incomes;
-}
-
-string IncomesXMLFile::convertDoubleToString (double number)
-{
-    ostringstream os;
-    os << number;
-    string stringOut = os.str();
-    return stringOut;
-}
-
-
-int IncomesXMLFile::getYearFromDate(string date)
-{
-    string stringYear;
-    string stringMonth;
-    string stringDay;
-    int year;
-    int month;
-    int day;
-    string dateWithoutDash="";
-
-
-    for (int i=0; i<=date.length(); i++)
-    {
-
-        if((date[i]!='-')&&(i!=10))
-        {
-            dateWithoutDash+=date[i];
-        }
-    }
-
-    stringYear=dateWithoutDash.substr(0,4);
-    stringMonth=dateWithoutDash.substr(4,2);
-    stringDay=dateWithoutDash.substr(7,2);
-
-    year=convertStringToInt(stringYear);
-    month=convertStringToInt(stringMonth);
-    day=convertStringToInt(stringDay);
-
-    return year;
-}
-int IncomesXMLFile::getMonthFromDate(string date)
-{
-    string stringYear;
-    string stringMonth;
-    string stringDay;
-    int year;
-    int month;
-    int day;
-    string dateWithoutDash="";
-
-
-    for (int i=0; i<=date.length(); i++)
-    {
-
-        if((date[i]!='-')&&(i!=10))
-        {
-            dateWithoutDash+=date[i];
-        }
-    }
-
-    stringYear=dateWithoutDash.substr(0,4);
-    stringMonth=dateWithoutDash.substr(4,2);
-    stringDay=dateWithoutDash.substr(7,2);
-
-
-    year=convertStringToInt(stringYear);
-    month=convertStringToInt(stringMonth);
-    day=convertStringToInt(stringDay);
-
-    return month;
-}
-int IncomesXMLFile::getDayFromDate(string date)
-{
-    string stringYear;
-    string stringMonth;
-    string stringDay;
-    int year;
-    int month;
-    int day;
-    string dateWithoutDash="";
-
-
-    for (int i=0; i<=date.length(); i++)
-    {
-
-        if((date[i]!='-')&&(i!=10))
-        {
-            dateWithoutDash+=date[i];
-        }
-    }
-
-    stringYear=dateWithoutDash.substr(0,4);
-    stringMonth=dateWithoutDash.substr(4,2);
-    stringDay=dateWithoutDash.substr(6,2);
-
-    year=convertStringToInt(stringYear);
-    month=convertStringToInt(stringMonth);
-    day=convertStringToInt(stringDay);
-
-    return day;
-}
-int IncomesXMLFile::convertStringToInt(string number)
-{
-    int numberInt;
-    istringstream iss(number);
-    iss >> numberInt;
-
-    return numberInt;
 }

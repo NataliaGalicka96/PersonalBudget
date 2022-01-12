@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
 
-    PersonalBudget personalBudget("Users.xml","Incomes.xml");
+    PersonalBudget personalBudget("Users.xml","Incomes.xml", "Expenses.xml");
 
     char choice;
 
@@ -45,12 +45,13 @@ int main()
                 personalBudget.addIncome();
                 break;
             case '2':
-
+                personalBudget.addExpense();
                 break;
             case '3':
                 personalBudget.showIncomeOfCurrentUser();
                 break;
             case '4':
+                personalBudget.showExpenseOfCurrentUser();
                 break;
             case '5':
                 break;

@@ -12,5 +12,6 @@ public:
     static string convertIntToString(int number);
     static int convertStringToInt(string number);
     static string changeCommaToDot(string amount);
+    static string convertDoubleToString (double number);
 };
 #endif // AUXILIARYMETHODS_H

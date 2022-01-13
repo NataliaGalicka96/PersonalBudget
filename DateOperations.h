@@ -12,12 +12,13 @@ class DateOperations
 
 public:
 
-
     string getCurrentDay();
     bool checkIfTheDateIsCorrect(string dateText);
     int getDayFromDate(string date);
     int getMonthFromDate(string date);
     int getYearFromDate(string date);
     int returnNumberOfDaysInMonth(int month, int year);
+    int convertDateFromStringToInt(string dateText);
+
 };
 #endif // DATEOPERATIONS_H

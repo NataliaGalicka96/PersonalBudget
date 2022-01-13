@@ -195,3 +195,22 @@ int DateOperations::getDayFromDate(string date)
 
     return day;
 }
+
+int DateOperations::convertDateFromStringToInt(string dateText)
+{
+    int dateWithoutDashInt=0;
+    string dateWithoutDash="";
+
+
+    for (int i=0; i<=dateText.length(); i++)
+    {
+        if((dateText[i]!='-')&&(i!=10))
+        {
+            dateWithoutDash+=dateText[i];
+        }
+    }
+
+    dateWithoutDashInt=AuxiliaryMethods::convertStringToInt(dateWithoutDash);
+
+    return dateWithoutDashInt;
+}

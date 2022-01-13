@@ -7,6 +7,7 @@
 #include <sstream>
 #include <iomanip>
 #include <windows.h>
+#include <algorithm>
 
 #include "Expense.h"
 #include "Markup.h"
@@ -35,5 +36,8 @@ public:
 
     void showExpenseOfCurrentUser();
     void showDataOfExpense(Expense expense);
+
+    struct CompareDate;
+    void sortExpensesByDateInAscendingOrder(vector <Expense> &expenses);
 };
 #endif // EXPENSEMANAGER_H

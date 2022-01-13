@@ -106,3 +106,15 @@ void ExpenseManager::showDataOfExpense(Expense expense)
     cout << "Amount: " << expense.getAmount() << endl;
 
 }
+struct ExpenseManager::CompareDate
+{
+    bool operator()(Expense &first, Expense &second)
+    {
+        return first.getDate() < second.getDate();
+    }
+} myObjectToSortVector;
+
+void ExpenseManager::sortExpensesByDateInAscendingOrder(vector <Expense> &expenses)
+{
+    sort(expenses.begin(), expenses.end(), myObjectToSortVector);
+}

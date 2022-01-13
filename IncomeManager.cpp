@@ -105,3 +105,16 @@ void IncomeManager::showDataOfIncome(Income income)
     cout << "Amount: " << income.getAmount() << endl;
 
 }
+
+struct IncomeManager::CompareDate
+{
+    bool operator()(Income &first, Income &second)
+    {
+        return first.getDate() < second.getDate();
+    }
+} myObjectToSortVector2;
+
+void IncomeManager::sortIncomesByDateInAscendingOrder(vector <Income> &incomes)
+{
+    sort(incomes.begin(), incomes.end(), myObjectToSortVector2);
+}

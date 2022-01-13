@@ -20,7 +20,6 @@ using namespace std;
 class ExpenseManager
 {
     const int ID_CURRENT_USER;
-    vector <Expense> expenses;
     ExpensesXMLFile expensesXMLFile;
     DateOperations dateOperations;
 
@@ -31,6 +30,7 @@ public:
         expenses=expensesXMLFile.loadExpensesFromFile(ID_CURRENT_USER);
     }
 
+    vector <Expense> expenses;
     Expense enterDataOfNewExpense();
     void addExpense();
 

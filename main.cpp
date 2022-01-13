@@ -48,10 +48,10 @@ int main()
                 personalBudget.addExpense();
                 break;
             case '3':
-                personalBudget.showIncomeOfCurrentUser();
+                personalBudget.showBalanceFromCurrentMonth();
                 break;
             case '4':
-                personalBudget.showExpenseOfCurrentUser();
+
                 break;
             case '5':
                 break;

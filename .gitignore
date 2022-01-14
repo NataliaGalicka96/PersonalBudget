@@ -1,5 +1,8 @@
 bin/
 obj/
 plan/
-PersonalBudget.*
+PersonalBudget.cbp
+PersonalBudget.cscope_file_list
+PersonalBudget.depend
+PersonalBudget.layout
 *.xml

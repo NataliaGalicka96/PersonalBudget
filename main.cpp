@@ -51,7 +51,7 @@ int main()
                 personalBudget.showBalanceFromCurrentMonth();
                 break;
             case '4':
-
+                personalBudget.showBalanceFromPreviousMonth();
                 break;
             case '5':
                 break;

@@ -5,34 +5,40 @@ string DateOperations::getCurrentDay()
     // current date/time based on current system
     time_t now = time(0);
 
-
     tm *ltm = localtime(&now);
     //char* dt = ctime(&now1);
-
 
     int year=1900+ltm->tm_year;
     int month=1+ltm->tm_mon;
     int day=ltm->tm_mday;
+
     string currentDay="";
 
+    currentDay=getDateText(day, month, year);
+
+    return currentDay;
+}
+
+string DateOperations::getDateText(int day, int month, int year)
+{
+    string dateString="";
 
     string yearString=AuxiliaryMethods::convertIntToString(year);
     string monthString=AuxiliaryMethods::convertIntToString(month);
     string dayString=AuxiliaryMethods::convertIntToString(day);
 
     if((month<10)&&(day>9))
-        currentDay=yearString+"-"+"0"+monthString+"-"+dayString;
+        dateString=yearString+"-"+"0"+monthString+"-"+dayString;
     if((month>9)&&(day<10))
-        currentDay=yearString+"-"+monthString+"-"+"0"+dayString;
+        dateString=yearString+"-"+monthString+"-"+"0"+dayString;
     if((month<10)&&(day<10))
-        currentDay=yearString+"-"+"0"+monthString+"-"+"0"+dayString;
+        dateString=yearString+"-"+"0"+monthString+"-"+"0"+dayString;
     if ((month>10)&&(day>10))
-        currentDay=yearString+"-"+monthString+"-"+dayString;
+        dateString=yearString+"-"+monthString+"-"+dayString;
 
-    return currentDay;
+    return dateString;
+
 }
-
-
 
 bool DateOperations::checkIfTheDateIsCorrect(string dateText)
 {
@@ -101,7 +107,6 @@ int DateOperations::returnNumberOfDaysInMonth(int month, int year)
     }
     return numberOfDays;
 }
-
 
 
 int DateOperations::getYearFromDate(string date)

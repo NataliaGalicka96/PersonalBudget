@@ -33,7 +33,6 @@ UserManager(string nameOfUsersFile):usersXMLFile(nameOfUsersFile)
     int downloadIdOfLoggedInUser();
     int userLogout();
 
-
     char selectOptionFromUserMenu();
     char selectOptionFromMainMenu();
 

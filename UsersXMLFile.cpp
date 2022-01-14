@@ -15,7 +15,7 @@ void UsersXMLFile::saveUserToXMLFile(User user)
     xmlSaveToFile.IntoElem();
     xmlSaveToFile.AddElem("User");
     xmlSaveToFile.IntoElem();
-    xmlSaveToFile.AddElem("UserId", convertIntToString(user.getId()));
+    xmlSaveToFile.AddElem("UserId", AuxiliaryMethods::convertIntToString(user.getId()));
     xmlSaveToFile.AddElem("UserName", user.getName());
     xmlSaveToFile.AddElem("UserSurname", user.getSurname());
     xmlSaveToFile.AddElem("UserLogin", user.getLogin());
@@ -24,15 +24,6 @@ void UsersXMLFile::saveUserToXMLFile(User user)
     xmlSaveToFile.Save(XMLFile::downloadXMLFileName());
 
     cout<<endl;
-    cout<<"User saved to XML file!"<<endl;
-}
-
-string UsersXMLFile::convertIntToString(int number)
-{
-    ostringstream ss;
-    ss << number;
-    string str = ss.str();
-    return str;
 }
 
 vector <User> UsersXMLFile::loadUsersFromXMLFile()

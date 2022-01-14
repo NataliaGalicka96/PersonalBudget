@@ -19,6 +19,7 @@ public:
     int getYearFromDate(string date);
     int returnNumberOfDaysInMonth(int month, int year);
     int convertDateFromStringToInt(string dateText);
+    string getDateText(int day, int month, int year);
 
 };
 #endif // DATEOPERATIONS_H

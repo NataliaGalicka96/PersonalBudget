@@ -1,8 +1,10 @@
 #include "PersonalBudget.h"
+
 void PersonalBudget::userRegistration()
 {
     userManager.userRegistration();
 }
+
 int PersonalBudget::userLogging()
 {
     userManager.userLogging();
@@ -11,25 +13,28 @@ int PersonalBudget::userLogging()
         incomeManager = new IncomeManager(NAME_INCOMES_FILE, userManager.downloadIdOfLoggedInUser());
         expenseManager = new ExpenseManager(NAME_EXPENSES_FILE, userManager.downloadIdOfLoggedInUser());
     }
-
 }
+
 void PersonalBudget::changePasswordOfLoggedInUser()
 {
     userManager.changePasswordOfLoggedInUser();
 }
+
 int PersonalBudget::downloadIdOfLoggedInUser()
 {
     userManager.downloadIdOfLoggedInUser();
 }
+
 int PersonalBudget::userLogout()
 {
     userManager.userLogout();
-
 }
+
 char PersonalBudget::selectOptionFromUserMenu()
 {
     userManager.selectOptionFromUserMenu();
 }
+
 char PersonalBudget::selectOptionFromMainMenu()
 {
     userManager.selectOptionFromMainMenu();
@@ -45,6 +50,7 @@ void PersonalBudget::showIncomeOfCurrentUser()
 {
     incomeManager->showIncomeOfCurrentUser();
 }
+
 void PersonalBudget::addExpense()
 {
     expenseManager = new ExpenseManager (NAME_EXPENSES_FILE,userManager.downloadIdOfLoggedInUser());
@@ -67,32 +73,28 @@ void PersonalBudget::showBalanceFromCurrentMonth()
 
         for (int i = 0; i < incomeManager->incomes.size(); i++)
         {
-            if (currentMonth == dateOperations.getMonthFromDate(incomeManager->incomes[i].getDate())
-                    && currentYear == dateOperations.getYearFromDate(incomeManager->incomes[i].getDate()))
+            if (currentMonth==dateOperations.getMonthFromDate(incomeManager->incomes[i].getDate())
+                    && currentYear==dateOperations.getYearFromDate(incomeManager->incomes[i].getDate()))
             {
                 incomesToSort.push_back(incomeManager->incomes[i]);
             }
         }
 
-
-
     incomeManager->sortIncomesByDateInAscendingOrder(incomesToSort);
-
 
         for (int i = 0; i < expenseManager->expenses.size(); i++)
         {
-            if (currentMonth == dateOperations.getMonthFromDate(expenseManager->expenses[i].getDate())
-                    && currentYear == dateOperations.getYearFromDate(expenseManager->expenses[i].getDate()))
+            if (currentMonth==dateOperations.getMonthFromDate(expenseManager->expenses[i].getDate())
+                    && currentYear==dateOperations.getYearFromDate(expenseManager->expenses[i].getDate()))
             {
                 expensesToSort.push_back(expenseManager->expenses[i]);
             }
         }
 
-
     expenseManager->sortExpensesByDateInAscendingOrder(expensesToSort);
 
     system("cls");
-    cout << "Balance from current month:" << endl << endl;
+    cout<<"Balance from current month:"<<endl<<endl;
 
     showBalance(incomesToSort, expensesToSort);
 }
@@ -106,12 +108,12 @@ void PersonalBudget::showBalance(vector <Income> &incomesToBalance, vector <Expe
         for (int i = 0; i < incomesToBalance.size(); i++)
         {
             cout<<fixed<<setprecision(2);
-            cout << "Date: " << incomesToBalance[i].getDate() << " Item: " << incomesToBalance[i].getItem() << " Amount: "
-                 << incomesToBalance[i].getAmount() << " zl." << endl;
+            cout<<"Date: "<<incomesToBalance[i].getDate()<<" Item: "<<incomesToBalance[i].getItem()<< " Amount: "
+                 <<incomesToBalance[i].getAmount()<<" zl."<<endl;
         }
     }
     else
-        cout << "No incomes at the selected time!" << endl;
+        cout<<"No incomes at the selected time!"<<endl;
 
     cout << endl;
     cout << "Expenses: " << endl;
@@ -121,12 +123,12 @@ void PersonalBudget::showBalance(vector <Income> &incomesToBalance, vector <Expe
         for (int i = 0; i < expensesToBalance.size(); i++)
         {
             cout<<fixed<<setprecision(2);
-            cout << "Date: " << expensesToBalance[i].getDate() << " Item: " << expensesToBalance[i].getItem() << " Amount: "
-                 << expensesToBalance[i].getAmount() << " zl." << endl;
+            cout <<"Date: "<<expensesToBalance[i].getDate()<<" Item: "<<expensesToBalance[i].getItem()<<" Amount: "
+                 <<expensesToBalance[i].getAmount()<<" zl."<< endl;
         }
     }
     else
-        cout << "No expenses at the selected time!" << endl;
+        cout<<"No expenses at the selected time!"<<endl;
 
     cout << endl;
 
@@ -143,13 +145,13 @@ void PersonalBudget::showBalance(vector <Income> &incomesToBalance, vector <Expe
         sumOfExpenses += expensesToBalance[i].getAmount();
     }
     cout<<fixed<<setprecision(2);
-    cout << "Total incomes: " << sumOfIncomes << " zl." << endl;
-    cout << "Total expenses: " << sumOfExpenses << " zl." << endl;
+    cout<< "Total incomes: " << sumOfIncomes << " zl." <<endl;
+    cout<< "Total expenses: " << sumOfExpenses << " zl." <<endl;
 
     double differenceBetweendIncomesAndExpenses = sumOfIncomes - sumOfExpenses;
 
     cout<<fixed<<setprecision(2);
-    cout << "Difference: " << differenceBetweendIncomesAndExpenses << " zl." << endl << endl;
+    cout<< "Difference: " << differenceBetweendIncomesAndExpenses << " zl." <<endl <<endl;
     system("pause");
 }
 
@@ -177,8 +179,8 @@ void PersonalBudget::showBalanceFromPreviousMonth()
 
         for (int i = 0; i < incomeManager->incomes.size(); i++)
         {
-            if (previousMonth == dateOperations.getMonthFromDate(incomeManager->incomes[i].getDate())
-                    && previousYear == dateOperations.getYearFromDate(incomeManager->incomes[i].getDate()))
+            if (previousMonth==dateOperations.getMonthFromDate(incomeManager->incomes[i].getDate())
+                    && previousYear==dateOperations.getYearFromDate(incomeManager->incomes[i].getDate()))
             {
                 incomesToSort.push_back(incomeManager->incomes[i]);
             }
@@ -189,18 +191,17 @@ void PersonalBudget::showBalanceFromPreviousMonth()
 
         for (int i = 0; i < expenseManager->expenses.size(); i++)
         {
-            if (previousMonth == dateOperations.getMonthFromDate(expenseManager->expenses[i].getDate())
-                    && previousYear == dateOperations.getYearFromDate(expenseManager->expenses[i].getDate()))
+            if (previousMonth==dateOperations.getMonthFromDate(expenseManager->expenses[i].getDate())
+                    && previousYear==dateOperations.getYearFromDate(expenseManager->expenses[i].getDate()))
             {
                 expensesToSort.push_back(expenseManager->expenses[i]);
             }
         }
 
-
     expenseManager->sortExpensesByDateInAscendingOrder(expensesToSort);
 
     system("cls");
-    cout << "Balance from previous month:" << endl << endl;
+    cout<< "Balance from previous month:" <<endl<<endl;
 
     showBalance(incomesToSort, expensesToSort);
 }
@@ -219,8 +220,6 @@ void PersonalBudget::showBalanceFromSelectedPeriod()
     while(dateOperations.checkIfTheDateIsCorrect(startDate)==false)
         {
             cout<<"Incorrect date! Enter a date between 2000-01-01 and the last day of the month of the current year."<<endl;
-            Sleep(2000);
-            //system("cls");
             cout<<"Enter date in format yyyy-mm-dd: ";
             cin>>startDate;
         }
@@ -230,10 +229,7 @@ void PersonalBudget::showBalanceFromSelectedPeriod()
 
     while(dateOperations.checkIfTheDateIsCorrect(endDate)==false)
         {
-
             cout<<"Incorrect date! Enter a date between 2000-01-01 and the last day of the month of the current year."<<endl;
-            Sleep(2000);
-            //system("cls");
             cout<<"Enter date in format yyyy-mm-dd: ";
             cin>>endDate;
         }
@@ -250,18 +246,7 @@ void PersonalBudget::showBalanceFromSelectedPeriod()
 
             string dayFromVector="";
 
-            string yearString=AuxiliaryMethods::convertIntToString(year);
-            string monthString=AuxiliaryMethods::convertIntToString(month);
-            string dayString=AuxiliaryMethods::convertIntToString(day);
-
-            if((month<10)&&(day>9))
-                dayFromVector=yearString+"-"+"0"+monthString+"-"+dayString;
-            if((month>9)&&(day<10))
-                dayFromVector=yearString+"-"+monthString+"-"+"0"+dayString;
-            if((month<10)&&(day<10))
-                dayFromVector=yearString+"-"+"0"+monthString+"-"+"0"+dayString;
-            if ((month>10)&&(day>10))
-                dayFromVector=yearString+"-"+monthString+"-"+dayString;
+            dayFromVector=dateOperations.getDateText(day, month, year);
 
             int dateFromVector = dateOperations.convertDateFromStringToInt(dayFromVector);
 
@@ -284,18 +269,7 @@ void PersonalBudget::showBalanceFromSelectedPeriod()
 
             string dayFromVector="";
 
-            string yearString=AuxiliaryMethods::convertIntToString(year);
-            string monthString=AuxiliaryMethods::convertIntToString(month);
-            string dayString=AuxiliaryMethods::convertIntToString(day);
-
-            if((month<10)&&(day>9))
-                dayFromVector=yearString+"-"+"0"+monthString+"-"+dayString;
-            if((month>9)&&(day<10))
-                dayFromVector=yearString+"-"+monthString+"-"+"0"+dayString;
-            if((month<10)&&(day<10))
-                dayFromVector=yearString+"-"+"0"+monthString+"-"+"0"+dayString;
-            if ((month>10)&&(day>10))
-                dayFromVector=yearString+"-"+monthString+"-"+dayString;
+            dayFromVector=dateOperations.getDateText(day, month, year);
 
             int dateFromVector = dateOperations.convertDateFromStringToInt(dayFromVector);
 

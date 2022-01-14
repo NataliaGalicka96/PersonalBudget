@@ -9,6 +9,7 @@ void UserManager::userRegistration()
     usersXMLFile.saveUserToXMLFile(user);
 
     cout<<endl<<"An account has been created!"<<endl<<endl;
+
     Sleep(2000);
 }
 
@@ -20,7 +21,8 @@ User UserManager::enterDataOfNewUser()
 
     string name, surname, login, password;
     system("cls");
-    cout<<">>>>  USER REGISTRATION  <<<<"<<endl<<endl;
+
+    cout<<" >>>>  USER REGISTRATION  <<<< "<<endl<<endl;
     cout<<"Enter your name: ";
     cin>>name;
     user.setName(name);
@@ -106,9 +108,9 @@ int UserManager::userLogging()
     system("pause");
     return 0;
 }
+
 void UserManager::changePasswordOfLoggedInUser()
 {
-
     system("cls");
     string newPassword;
     cout<<"Enter new password: ";
@@ -132,7 +134,7 @@ char UserManager::selectOptionFromMainMenu()
 {
     char choice;
     system("cls");
-    cout<<">>>> MAIN MENU <<<<"<<endl;
+    cout<<" >>>> MAIN MENU <<<< "<<endl;
     cout<<"----------------------"<<endl;
     cout<<"1. User registration"<<endl;
     cout<<"2. User logging"<<endl;
@@ -147,7 +149,7 @@ char UserManager::selectOptionFromUserMenu()
 {
     char choice;
     system("cls");
-    cout<<">>>> USER MENU <<<<"<<endl;
+    cout<<" >>>> USER MENU <<<< "<<endl;
     cout<<"----------------------"<<endl;
     cout<<"1. Add income. "<<endl;
     cout<<"2. Add expense. "<<endl;
@@ -168,10 +170,12 @@ int UserManager::downloadIdOfLoggedInUser()
 {
     return idCurrentUser;
 }
+
 int UserManager::userLogout()
 {
     idCurrentUser=0;
 }
+
 bool UserManager::checkUserLoggedIn()
 {
     if(idCurrentUser>0)

@@ -54,6 +54,7 @@ int main()
                 personalBudget.showBalanceFromPreviousMonth();
                 break;
             case '5':
+                personalBudget.showBalanceFromSelectedPeriod();
                 break;
             case '6':
                 personalBudget.changePasswordOfLoggedInUser();
